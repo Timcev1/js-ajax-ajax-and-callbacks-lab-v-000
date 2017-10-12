@@ -11,7 +11,7 @@ function searchRepositories() {
   })
 }
 
-var renderSearch = (result) => {
+function showRepositories(repos) {
   const repoList = '<div>' + repos.items.map(r => {
   return (`
         <h2><a href="${r.html_url}">${r.name}</a></h2>

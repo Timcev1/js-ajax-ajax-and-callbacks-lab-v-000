@@ -20,5 +20,20 @@ var renderSearch = (result) => {
   )}.join('')
   document.getElementById("results").innerHTML = repoList
 }
+function showCommits(el){
+  $.get(`https://api.github.com/repos/${el.dataset.owner}/${el.dataset.repository}/commits`, data =>{
+    $("#details").html(displaycommits(data))
+  }).fail(error => {
+    displayError()
+  })
+}
 
+function displaycommits(data){
+  const result = data.map((r) =>{
+    return `
+    <h3>${r.sha}</h3>
+    <p>${r.commit.message}</p>
+    `
+  })
+}
 var render

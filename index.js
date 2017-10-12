@@ -14,17 +14,16 @@ function searchRepositories() {
   })
 }
 
-function renderSearch(repos) {
-  const repoList = '<div>' + repos.items.map(r => {
-  return (`
-        <h2><a href="${r.html_url}">${r.name}</a></h2>
-        <p><a href="#" data-repository="${r.name}" data-owner="${r.owner.login}" onclick="showCommits(this)">Show Commits</a></p>
-        <p>${r.description}</p>
-    `
-  )}.join('') + "</div>"
-)
-  document.getElementById("results").innerHTML = repoList
-}
+function showRepositories(result){
+  let repos = '<ul>' + result.items.map(r => {
+    return (`<li>
+      <a href="${r.html_url}">${r.name}</a>
+      <p>${r.description}${r.owner.url}${r.owner.login}</p>
+      <img src="${r.owner.avatar_url}">
+      <a href="#" data-repository="${r.name}" data-owner="${r.owner.login}" onclick="showCommits(this)">Show Commits</a>
+      </li>`)
+  }).join('') + "</ul>"
+  return repos
 
 function showCommits(el){
   $.get(`https://api.github.com/repos/${el.dataset.owner}/${el.dataset.repository}/commits`, data =>{

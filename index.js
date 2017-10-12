@@ -2,6 +2,15 @@ $(document).ready(function (){
 });
 var displayError = () => $('#errors').html("I'm sorry, there's been an error. Please try again.")
 
+function searchRepositories() {
+  const searchTerms = $('#searchTerms').val()
+  $.get(`https://api.github.com/search/repositories?q=${searchTerms}`, data => {
+    $(`#results`).html(renderSearch(data))
+  }).fail(error => {
+    displayError()
+  })
+}
+
 function renderSearch(repos) {
   const repoList = '<div>' + repos.items.map(r => {
   return (`
@@ -30,13 +39,4 @@ function displaycommits(data){
     `
   })
   return result;
-}
-
-function searchRepositories() {
-  const searchTerms = $('#searchTerms').val()
-  $.get(`https://api.github.com/search/repositories?q=${searchTerms}`, data => {
-    $(`#results`).html(renderSearch(data))
-  }).fail(error => {
-    displayError()
-  })
 }

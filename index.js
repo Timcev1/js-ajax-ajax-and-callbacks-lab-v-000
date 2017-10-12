@@ -15,13 +15,13 @@ function searchRepositories() {
 }
 
 function searchRepositories() {
-+  const input = $("#searchTerms")[0].value;
-+  $.get(`https://api.github.com/search/repositories?q=${input}`, data => {
-+    $("#results").html(showRepositories(data))
-+  }).fail(error => {
-+    displayError()
-+  })
-+}
+  const input = $("#searchTerms")[0].value;
+  $.get(`https://api.github.com/search/repositories?q=${input}`, data => {
+    $("#results").html(showRepositories(data))
+  }).fail(error => {
+    displayError()
+  })
+}
 
 function showCommits(el){
   $.get(`https://api.github.com/repos/${el.dataset.owner}/${el.dataset.repository}/commits`, data =>{

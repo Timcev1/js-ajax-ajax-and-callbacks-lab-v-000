@@ -15,7 +15,7 @@ function searchRepositories() {
 }
 
 function searchRepositories() {
-  const search = $("#searchTerms")[0].value;
+  const search = $("#searchTerms").value;
   $.get(`https://api.github.com/search/repositories?q=${search}`, data => {
     $("#results").html(showRepositories(data))
   }).fail(error => {

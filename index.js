@@ -8,7 +8,7 @@ function displayError() {
 function searchRepositories() {
   const searchTerms = $('#searchTerms').val()
   $.get(`https://api.github.com/search/repositories?q=${searchTerms}`, data => {
-    $(`#results`).html(renderSearch(data))
+    $(`#results`).html(showRepositories(data))
   }).fail(error => {
     displayError()
   })

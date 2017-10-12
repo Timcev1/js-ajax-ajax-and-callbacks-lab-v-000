@@ -10,6 +10,7 @@ function renderSearch(repos) {
         <p>${r.description}</p>
     `
   )}.join('')
+)
   document.getElementById("results").innerHTML = repoList
 }
 

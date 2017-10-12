@@ -10,6 +10,7 @@ var searchRepositories = () => {
     displayError()
   })
 }
+
 var renderSearch = (result) => {
   const repoList = '<div>' + repos.items.map(r => {
   return (`

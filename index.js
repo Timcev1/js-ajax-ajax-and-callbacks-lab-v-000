@@ -11,6 +11,7 @@ var searchRepositories = () => {
   })
 }
 var renderSearchResult = (result) => {
+  const repoList = '<ul>' + repos.items.map(r => {
   return `
       <div>
         <h2><a href="${result.html_url}">${result.name}</a></h2>
@@ -20,3 +21,5 @@ var renderSearchResult = (result) => {
       <hr>
     `
 }
+
+var render

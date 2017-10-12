@@ -14,13 +14,16 @@ function searchRepositories() {
   })
 }
 
-function searchRepositories() {
-  const search = $("#searchTerms").value;
-  $.get(`https://api.github.com/search/repositories?q=${search}`, data => {
-    $("#results").html(showRepositories(data))
-  }).fail(error => {
-    displayError()
-  })
+function renderSearch(repos) {
+  const repoList = '<div>' + repos.items.map(r => {
+  return (`
+        <h2><a href="${r.html_url}">${r.name}</a></h2>
+        <p><a href="#" data-repository="${r.name}" data-owner="${r.owner.login}" onclick="showCommits(this)">Show Commits</a></p>
+        <p>${r.description}</p>
+    `
+  )}.join('') + "</div>"
+)
+  document.getElementById("results").innerHTML = repoList
 }
 
 function showCommits(el){

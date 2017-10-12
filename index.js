@@ -1,5 +1,6 @@
 $(document).ready(function (){
 });
+
 function displayError() {
   $("#errors").html("There has been error. Please try again.")
 }
@@ -13,17 +14,14 @@ function searchRepositories() {
   })
 }
 
-function renderSearch(repos) {
-  const repoList = '<div>' + repos.items.map(r => {
-  return (`
-        <h2><a href="${r.html_url}">${r.name}</a></h2>
-        <p><a href="#" data-repository="${r.name}" data-owner="${r.owner.login}" onclick="showCommits(this)">Show Commits</a></p>
-        <p>${r.description}</p>
-    `
-  )}.join('')
-)
-  document.getElementById("results").innerHTML = repoList
-}
+function searchRepositories() {
++  const input = $("#searchTerms")[0].value;
++  $.get(`https://api.github.com/search/repositories?q=${input}`, data => {
++    $("#results").html(showRepositories(data))
++  }).fail(error => {
++    displayError()
++  })
++}
 
 function showCommits(el){
   $.get(`https://api.github.com/repos/${el.dataset.owner}/${el.dataset.repository}/commits`, data =>{

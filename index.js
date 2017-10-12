@@ -6,6 +6,6 @@ var searchRepositories = () => {
   $.get(`https://api.github.com/search/repositories?q=${searchTerms}`, data => {
     $(`#results`).html(renderSearchResults(data))
   }).fail(error => {
-    displayError()
+     $('#errors').html("There's been an error. Please try again.")
   })
 }

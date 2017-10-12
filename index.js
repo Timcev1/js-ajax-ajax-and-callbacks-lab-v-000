@@ -35,5 +35,6 @@ function displaycommits(data){
     <p>${r.commit.message}</p>
     `
   })
+  return result;
 }
 var render

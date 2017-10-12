@@ -2,9 +2,6 @@ $(document).ready(function (){
 });
 var displayError = () => $('#errors').html("I'm sorry, there's been an error. Please try again.")
 
-
-}
-
 function renderSearch(repos) {
   const repoList = '<div>' + repos.items.map(r => {
   return (`
@@ -15,6 +12,7 @@ function renderSearch(repos) {
   )}.join('')
   document.getElementById("results").innerHTML = repoList
 }
+
 function showCommits(el){
   $.get(`https://api.github.com/repos/${el.dataset.owner}/${el.dataset.repository}/commits`, data =>{
     $("#details").html(displaycommits(data))
@@ -40,3 +38,4 @@ function searchRepositories() {
   }).fail(error => {
     displayError()
   })
+}

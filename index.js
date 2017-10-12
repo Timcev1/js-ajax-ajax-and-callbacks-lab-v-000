@@ -24,6 +24,7 @@ function showRepositories(result){
       </li>`)
   }).join('') + "</ul>"
   return repos
+}
 
 function showCommits(el){
   $.get(`https://api.github.com/repos/${el.dataset.owner}/${el.dataset.repository}/commits`, data =>{

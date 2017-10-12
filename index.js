@@ -37,4 +37,3 @@ function displaycommits(data){
   })
   return result;
 }
-var render

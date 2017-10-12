@@ -2,7 +2,7 @@ $(document).ready(function (){
 });
 
 function displayError() {
-  $("#errors").html("There has been error. Please try again.")
+  $("#errors").html("I'm sorry, there's been an error. Please try again.")
 }
 
 function searchRepositories() {

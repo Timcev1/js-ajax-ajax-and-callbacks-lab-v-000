@@ -5,12 +5,12 @@ var displayError = () => $('#errors').html("I'm sorry, there's been an error. Pl
 var searchRepositories = () => {
   const searchTerms = $('#searchTerms').val()
   $.get(`https://api.github.com/search/repositories?q=${searchTerms}`, data => {
-    $(`#results`).html(renderSearchResults(data))
+    $(`#results`).html(renderSearch(data))
   }).fail(error => {
     displayError()
   })
 }
-var renderSearchResult = (result) => {
+var renderSearch = (result) => {
   const repoList = '<ul>' + repos.items.map(r => {
   return `
       <div>
